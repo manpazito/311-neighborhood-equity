@@ -62,8 +62,8 @@ To keep everything organized and avoid conflicts:
 * Each member creates their own feature branch:
 
   * `leslie-viz/` for figures and maps
-  * `felix-analysis/` for cleaning and analysis
-  * `manuel-report/` for documentation and writing
+  * `felix-viz/` for figures and maps
+  * `manuel-analysis/` for cleaning and analysis
 
 ### Workflow Steps
 
@@ -89,7 +89,7 @@ To keep everything organized and avoid conflicts:
    ```
 5. **Review Pull Requests** from teammates before merging.
 
-## 📄 License
+## License
 
 This project is for academic and educational use.
 Feel free to adapt or reference with proper attribution.
