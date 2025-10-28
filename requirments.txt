@@ -1,9 +1,0 @@
-geopandas
-pandas
-numpy
-census
-us
-matplotlib
-seaborn
-mapclassify
-pydeck
