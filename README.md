@@ -64,5 +64,7 @@ This guide includes:
 
 ## License
 
-This project is for academic and educational use.
-Feel free to adapt or reference with proper attribution.
+This project is released under the [BSD 2-Clause License](./LICENSE)  
+for academic and educational purposes.  
+You are welcome to reuse, adapt, or reference this work with proper attribution  
+to **Leslie Veliz, Felix Zhang, and Manuel A. Martinez Garcia**.
