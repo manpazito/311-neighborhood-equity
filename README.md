@@ -1,6 +1,6 @@
 # 311-Neighborhood-Equity
 
-Exploring the relationship between 311 service requests and household income across San Francisco neighborhoods (2010–2020).  
+Exploring the relationship between 311 service requests and household income across San Francisco neighborhoods (2010–2020).
 This project examines how patterns of civic reporting vary by income level to highlight potential disparities in access to city services.
 
 ---
@@ -8,29 +8,28 @@ This project examines how patterns of civic reporting vary by income level to hi
 ## Repository Structure
 
 ```
-
 311-neighborhood-equity/
 ├── data/         # Raw and processed datasets (311 + ACS)
 ├── figures/      # Maps, charts, and other visual outputs
 ├── scripts/      # Python scripts for cleaning, analysis, and mapping
 └── reports/      # Drafts, notes, and final reports
-
-````
+```
 
 ---
 
 ## Getting Started
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/<your-org-or-user>/311-neighborhood-equity.git
    cd 311-neighborhood-equity
-    ```
+   ```
 
 2. **Create a virtual environment**
 
    ```bash
-   python -m venv venv
+   python3 -m venv venv
    source venv/bin/activate      # (Mac/Linux)
    venv\Scripts\activate         # (Windows)
    ```
@@ -38,56 +37,30 @@ This project examines how patterns of civic reporting vary by income level to hi
 3. **Install dependencies**
 
    ```bash
-   pip install -r requirements.txt
+   pip3 install -r requirements.txt
    ```
 
 4. **Run scripts**
 
    ```bash
-   python scripts/clean_data.py
-   python scripts/analyze_data.py
+   python3 scripts/clean_data.py
+   python3 scripts/analyze_data.py
    ```
 
 ---
 
 ## Collaboration Guidelines
 
-We are a 3-person team working in parallel on different parts of the project.
-To keep everything organized and avoid conflicts:
+To keep everything organized and avoid conflicts, please refer to the **[Contributing Guide](./CONTRIBUTING.md)** for step-by-step collaboration instructions.
 
-### Branch Workflow
+This guide includes:
 
-* `main` → stable, reviewed work only
-* `dev` → staging branch for merging team contributions
-* Each member creates their own feature branch:
+* How to switch to and pull from `dev`
+* How to add, remove, commit, and push changes
+* Recommended branch naming and PR workflow
+* Troubleshooting common Git issues
 
-  * `leslie-viz/` for figures and maps
-  * `felix-viz/` for figures and maps
-  * `manuel-analysis/` for cleaning and analysis
-
-### Workflow Steps
-
-1. **Pull latest changes** before starting work:
-
-   ```bash
-   git pull origin dev
-   ```
-2. **Create a new branch** for your task:
-
-   ```bash
-   git checkout -b <your-branch-name>
-   ```
-3. **Commit frequently** with clear messages:
-
-   ```bash
-   git commit -m "Cleaned ACS data and added tract join"
-   ```
-4. **Push and open a Pull Request (PR)** to `dev`:
-
-   ```bash
-   git push origin <your-branch-name>
-   ```
-5. **Review Pull Requests** from teammates before merging.
+---
 
 ## License
 
