@@ -1,53 +1,47 @@
-# === Python ===
+# -----------------
+# Python / notebooks
+# -----------------
 __pycache__/
-*.py[cod]
+*.pyc
 *.pyo
 *.pyd
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-venv/
-.env/
 .ipynb_checkpoints/
+*.ipynb_checkpoints
+.env
+.venv
+venv/
+.env.*
+*.env
 
-# === OS Specific ===
+# VS Code / local editor stuff
+.vscode/
+*.code-workspace
+
+# -----------------
+# Node / formatting tools
+# -----------------
+node_modules/
+
+# -----------------
+# Data (raw + processed)
+# -----------------
+data/raw/**
+data/processed/**
+!data/raw/README.md
+!data/processed/README.md
+
+# Allow small "sample" data files for demos if you add them later:
+!data/raw/sample_*.csv
+!data/processed/sample_*.parquet
+
+# -----------------
+# Outputs / figures
+# -----------------
+figures/**
+!figures/README.md
+
+# -----------------
+# OS / misc
+# -----------------
 .DS_Store
 Thumbs.db
-
-# === IDEs ===
-.vscode/
-.idea/
-*.swp
-
-# === Data ===
-data/raw/
-data/interim/
-data/tmp/
-*.csv
-*.xlsx
-*.geojson
-*.shp
-*.dbf
-*.shx
-*.prj
-*.zip
-
-# Keep clean/processed data if small and reproducible
-!data/processed/readme.md
-
-# === Figures and Outputs ===
-figures/*.png
-figures/*.pdf
-figures/*.svg
-
-# === Logs and Reports ===
-*.log
-reports/drafts/
-reports/tmp/
-
-# === Environment and Notebooks ===
-*.env
-*.ipynb_checkpoints/
-*.sqlite
