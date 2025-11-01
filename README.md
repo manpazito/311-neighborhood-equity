@@ -1,7 +1,22 @@
 # 311-Neighborhood-Equity
 
-Exploring the relationship between 311 service requests and household income across San Francisco neighborhoods (2010–2020).
-This project examines how patterns of civic reporting vary by income level to highlight potential disparities in access to city services.
+This project analyzes the relationship between **311 service requests** and **household income** across San Francisco neighborhoods (2010–2020).
+It explores how patterns of civic reporting vary by income level to highlight potential disparities in access to city services.
+
+---
+
+## Overview
+
+* **Goal:** Examine whether income correlates with reporting frequency of non-emergency 311 requests.
+* **Data Sources:**
+
+  * San Francisco 311 Service Requests (open data portal)
+  * U.S. Census American Community Survey (ACS 5-Year Estimates)
+* **Methods:**
+
+  * Data cleaning, geospatial joins by neighborhood and census tract
+  * Statistical summaries and map visualizations
+  * Exploration of reporting intensity vs. median income
 
 ---
 
@@ -10,61 +25,90 @@ This project examines how patterns of civic reporting vary by income level to hi
 ```
 311-neighborhood-equity/
 ├── data/         # Raw and processed datasets (311 + ACS)
-├── figures/      # Maps, charts, and other visual outputs
-├── scripts/      # Python scripts for cleaning, analysis, and mapping
-└── reports/      # Drafts, notes, and final reports
+├── figures/      # Maps, charts, and visualization outputs
+├── scripts/      # Python notebooks and analysis scripts
+└── reports/      # Notes and writeups
 ```
 
 ---
 
 ## Getting Started
 
-1. **Clone the repository**
+### 1. Clone the repository
 
-   ```bash
-   git clone https://github.com/<your-org-or-user>/311-neighborhood-equity.git
-   cd 311-neighborhood-equity
-   ```
+```bash
+git clone https://github.com/<your-user-or-org>/311-neighborhood-equity.git
+cd 311-neighborhood-equity
+```
 
-2. **Create a virtual environment**
+### 2. Install dependencies
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate      # (Mac/Linux)
-   venv\Scripts\activate         # (Windows)
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-3. **Install dependencies**
+### 3. (Optional) Download data
 
-   ```bash
-   pip3 install -r requirements.txt
-   ```
+Large raw data files are not stored in the repo.
+You can obtain them from:
 
-4. **Run scripts**
+* [SF Open Data – 311 Service Requests](https://data.sfgov.org/)
+* [U.S. Census Bureau – ACS Data API](https://www.census.gov/data/developers/data-sets/acs-5year.html)
 
-   ```bash
-   python3 scripts/clean_data.py
-   python3 scripts/analyze_data.py
-   ```
+Place datasets under:
+
+```
+data/raw/
+```
+
+### 4. Run analysis
+
+Example:
+
+```bash
+python scripts/clean_data.py
+python scripts/analyze_data.py
+```
+
+or open the provided notebooks (e.g., `data_analysis.ipynb`) in Jupyter Lab or VS Code.
 
 ---
 
-## Collaboration Guidelines
+## Example Outputs
 
-To keep everything organized and avoid conflicts, please refer to the **[Contributing Guide](./CONTRIBUTING.md)** for step-by-step collaboration instructions.
+* Choropleth maps of 311 request density by neighborhood
+* Scatterplots of household income vs. request frequency
+* Summary tables comparing service request types across income groups
 
-This guide includes:
+Example figure (from `figures/`):
 
-* How to switch to and pull from `dev`
-* How to add, remove, commit, and push changes
-* Recommended branch naming and PR workflow
-* Troubleshooting common Git issues
+```
+Income_vs_311_Map.png
+```
+
+---
+
+## Tools & Libraries
+
+* **Python 3**
+* pandas, geopandas, numpy
+* matplotlib / seaborn / plotly
+* shapely, fiona
+* jupyter / notebook
 
 ---
 
 ## License
 
-This project is released under the [BSD 2-Clause License](./LICENSE)  
-for academic and educational purposes.  
-You are welcome to reuse, adapt, or reference this work with proper attribution  
-to **Leslie Veliz, Felix Zhang, and Manuel A. Martinez Garcia**.
+This project is released under the [BSD 2-Clause License](./LICENSE)
+for academic and educational use.
+Please attribute **Leslie Veliz**, **Felix Zhang**, and **Manuel A. Martinez Garcia** when reusing or referencing this work.
+
+---
+
+## Citation
+
+If referencing this project in academic or professional contexts, please cite:
+
+> Veliz, L., Zhang, F., & Martinez Garcia, M. A. (2025). *311 Neighborhood Equity: Exploring Civic Reporting and Income Disparities in San Francisco*.
+> University of California, Berkeley.
