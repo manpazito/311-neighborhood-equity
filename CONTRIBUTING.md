@@ -1,292 +1,259 @@
 # Contributing Guide
 
-**Goal:** Everyone does their work in `dev` first. We only merge to `main` after review.
-
----
-> Folder layout:
->
-> ```
-> 311-neighborhood-equity/
-> ├─ data/      # raw/processed data (no secrets)
-> ├─ scripts/   # Python notebooks & scripts
-> ├─ figures/   # exported plots/maps
-> └─ reports/   # notes & writeups
-> ```
+**Goal:**
+Everyone works in the `dev` branch.
+We only merge `dev` → `main` after review.
+Keep commits small, messages clear, and never push huge data directly.
 
 ---
 
-## 1) Everyday workflow (TL;DR checklist)
+## 📁 Project Structure
 
-> **You do these steps at the start and end of each work session.**
-
-1. Open a terminal inside the project folder: `cd 311-neighborhood-equity`
-2. **Make sure you’re on `dev`:**
-
-   ```bash
-   git checkout dev
-   ```
-3. **Get the newest code from GitHub into `dev`:**
-
-   ```bash
-   git pull origin dev
-   ```
-4. Do your work (edit files in `data/`, `scripts/`, `figures/`, or `reports/`).
-5. **See what changed:**
-
-   ```bash
-   git status
-   ```
-6. **Stage your changes:**
-
-   * Add new/edited files:
-
-     ```bash
-     git add path/to/file1 path/to/file2
-     # or: add everything you changed
-     git add .
-     ```
-   * Remove files you deleted (so Git knows):
-
-     ```bash
-     git rm path/to/file_to_remove
-     ```
-7. **Commit with a short message:**
-
-   ```bash
-   git commit -m "short: what you changed (e.g., clean 311 CSV; add income join)"
-   ```
-8. **Upload your commits to the `dev` branch on GitHub:**
-
-   ```bash
-   git push origin dev
-   ```
-9. Tell the team in chat that you pushed.
-
-> **Rule of thumb:** small, frequent commits (1 logical idea per commit) are best.
-
----
-
-## 2) Recommended: Personal feature branches (safer)
-
-If you’re doing bigger changes, work on your own branch based off `dev`, then merge back into `dev`.
-
-1. **Start from up‑to‑date `dev`:**
-
-   ```bash
-   git checkout dev
-   git pull origin dev
-   ```
-2. **Create and switch to your branch:**
-
-   ```bash
-   git checkout -b feat/<your-name>-<short-topic>
-   # example: feat/miriam-clean-calls
-   ```
-3. Do work → `git add` → `git commit -m "..."` (repeat as needed).
-4. **Push your branch (first time needs -u):**
-
-   ```bash
-   git push -u origin feat/<your-name>-<short-topic>
-   ```
-5. On GitHub, open a **Pull Request** to merge your feature branch **into `dev`**. Ask 1 teammate to review.
-6. After approval, **merge into `dev`**. (We only merge `dev` → `main` for releases/milestones.)
-
----
-
-## 3) How we handle `main` vs `dev`
-
-* **`main`** = clean, presentation‑ready state. Protected. Do **not** commit directly.
-* **`dev`** = active collaboration branch. Everyone pushes here or opens PRs into it.
-* **Flow:** feature branches → PR → `dev` → (periodically) PR → `main`.
-
----
-
-## 4) File naming & organization
-
-* Use **lowercase_with_underscores**. Examples:
-
-  * `data/raw/311_requests_2015.csv`
-  * `data/processed/311_sf_2010_2020.parquet`
-  * `scripts/clean_311_to_acs_join.py`
-  * `figures/choro_income_311_rate.png`
-* Never commit secrets, credentials, or huge raw dumps (>100MB). If needed, coordinate first.
-
----
-
-## 5) Common commands (copy/paste)
-
-**Switch to a branch:**
-
-```bash
-git checkout dev
-git checkout main
-git checkout feat/<your-branch>
 ```
-
-**Create a branch and switch to it:**
-
-```bash
-git checkout -b feat/<your-branch>
-```
-
-**See changes:**
-
-```bash
-git status
-```
-
-**Stage all changes:**
-
-```bash
-git add .
-```
-
-**Stage specific files:**
-
-```bash
-git add scripts/clean_311_to_acs_join.py figures/map1.png
-```
-
-**Unstage a file (if you added by accident):**
-
-```bash
-git restore --staged path/to/file
-```
-
-**Remove a tracked file:**
-
-```bash
-git rm path/to/file
-```
-
-**Commit:**
-
-```bash
-git commit -m "short: explain what you changed"
-```
-
-**Pull latest `dev`:**
-
-```bash
-git checkout dev
-git pull origin dev
-```
-
-**Push to `dev`:**
-
-```bash
-git push origin dev
+311-neighborhood-equity/
+├─ data/        # raw + processed data (large files stay local or LFS)
+├─ scripts/     # notebooks and Python scripts
+├─ figures/     # plots, maps, visualizations
+├─ reports/     # notes and writeups
+├─ requirements.txt
+├─ .env         # local settings (not committed)
+└─ README.md
 ```
 
 ---
 
-## 6) Typical issues & quick fixes
+## Setup (first time only)
 
-**A) “Everything is up to date” but you don’t see teammates’ work**
+### 1. Install Git LFS *(before cloning)*
 
-```bash
-git checkout dev
-git pull origin dev
-```
+Some project data uses **Git Large File Storage (LFS)**.
+Install and enable it once so large files download automatically.
 
-Make sure you’re actually on `dev`.
-
-**B) First push of a new branch complains about upstream**
+**Fedora / Linux**
 
 ```bash
-git push -u origin feat/<your-branch>
+sudo dnf install git-lfs && git lfs install
 ```
 
-**C) Merge conflict (two people edited the same lines)**
-
-1. Try to pull:
-
-   ```bash
-   git pull origin dev
-   ```
-2. Git will mark conflict files with `<<<<<<`, `======`, `>>>>>>`.
-3. Open those files, decide which pieces to keep, then:
-
-   ```bash
-   git add path/to/conflicted_file
-   git commit -m "resolve: merge conflicts in <file>"
-   git push origin dev
-   ```
-
-Ask a teammate for help if stuck.
-
-**D) You have local edits but want fresh `dev`**
+**macOS**
 
 ```bash
-git stash          # temporarily save your edits
-git pull origin dev
-git stash pop      # re‑apply your edits
+brew install git-lfs && git lfs install
 ```
 
-**E) Accidentally worked on `main`**
+**Windows (PowerShell)**
+
+```powershell
+choco install git-lfs
+git lfs install
+```
+
+If you already cloned before installing:
 
 ```bash
-git checkout dev
-# optionally cherry‑pick your commits or create a feature branch:
-git checkout -b feat/move-work-from-main
+git lfs pull
 ```
-
-Then open a PR into `dev`.
 
 ---
 
-## 7) Commit message style (simple)
+### 2. Clone the repo
 
-* Start with a short verb: `add`, `fix`, `clean`, `refactor`, `doc`, `plot`, `data`.
-* Keep it under ~70 chars.
-* Examples:
-
-  * `clean: drop null service requests and standardize columns`
-  * `plot: add income vs 311 rate choropleth`
-  * `data: add ACS 2013 tract income table`
-
----
-
-## 8) Pull Request (PR) checklist (into `dev`)
-
-* [ ] Branch up to date with `dev` (`git pull origin dev` on your branch)
-* [ ] Runs without errors (scripts/notebooks)
-* [ ] Clear description of what changed and how to test
-* [ ] At least 1 teammate reviewed
-
-We merge `dev` → `main` after we agree it’s presentation‑ready.
-
----
-
-## 9) Glossary (plain English)
-
-* **Repository (repo):** The project folder tracked by Git.
-* **Branch:** A named line of work. `main` is the clean one; `dev` is the shared work area.
-* **Commit:** A saved snapshot of your changes with a message.
-* **Push:** Upload your local commits to GitHub.
-* **Pull:** Download teammates’ commits from GitHub.
-* **Merge conflict:** When two commits change the same lines; you must choose what to keep.
-
----
-
-## 10) Quick start (print me!)
-
-#### From terminal, enter:
 ```bash
+cd ~/projects
+git clone https://github.com/manpazito/311-neighborhood-equity.git
 cd 311-neighborhood-equity
 ```
-##### start work
+
+---
+
+### 3. Install Python requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 4. Create your `.env` file
+
+Each teammate makes their own `.env` (not pushed to GitHub):
+
+```bash
+# .env
+API_KEY=your_api_key_here
+DATA_PATH=./data/
+MAPBOX_TOKEN=your_mapbox_token_here
+```
+
+In Python, load it like this:
+
+```python
+from dotenv import load_dotenv
+import os
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+```
+
+---
+
+## Workflow
+
+1. **Go to the repo**
+
+   ```bash
+   cd ~/projects/311-neighborhood-equity
+   ```
+
+2. **Switch to and update `dev`**
+
+   ```bash
+   git checkout dev
+   git pull origin dev
+   ```
+
+3. **Work normally**
+
+   * Edit notebooks or scripts in `scripts/`
+   * Add plots or figures
+   * Avoid committing very large files directly
+
+4. **Stage your changes**
+
+   ```bash
+   git add .
+   ```
+
+   or specific files:
+
+   ```bash
+   git add scripts/clean_data.py figures/map1.png
+   ```
+
+5. **Commit with a short, clear message**
+
+   ```bash
+   git commit -m "clean: standardized 311 CSV columns"
+   ```
+
+6. **Push to GitHub**
+
+   ```bash
+   git push origin dev
+   ```
+
+7. **Make a Pull Request**
+
+   * Go to the repo on GitHub
+   * Click **“Compare & pull request”**
+   * Base branch: `main` → Compare: `dev`
+   * Add a short description of what changed
+
+---
+
+## Handling Large Data Files
+
+Never push large files 500 MB + files directly.
+
+### Option A – Shared Drive (default)
+
+* Store big files (e.g., `311_Cases_2023.csv`, `serv_req_cleaned.parquet`) in a shared Google Drive or OneDrive folder [here](https://drive.google.com/drive/folders/1-8gLff4e4engZ5tkt-4zM_JgbdhAp56Q?usp=drive_link).
+* Keep local copies in:
+
+  * `data/raw/` → original
+  * `data/processed/` → cleaned
+* These folders are ignored in `.gitignore`.
+* Add small `README.md` files explaining where to get the data.
+
+### Option B – Git LFS (when agreed)
+
+If the team decides to version data inside GitHub:
+
+```bash
+git lfs track "data/**"
+git add .gitattributes
+git commit -m "chore: track data files with LFS"
+git push origin dev
+```
+
+Everyone must have Git LFS installed, and note that GitHub LFS storage is limited.
+
+---
+
+## Commit Message Style
+
+Use short, action-based messages. Here are some examples:
+
+* `new data cleaning script`
+* `join mismatch on tract_id`
+* `update income choropleth`
+* `update requirements.txt`
+
+---
+
+## Common Fixes & Troubleshooting
+
+**A) Don’t see teammates’ work**
+
 ```bash
 git checkout dev
 git pull origin dev
 ```
 
-##### edit files in data/, scripts/, figures/, reports/
+**B) Changes not on GitHub**
+
 ```bash
 git add .
-git commit -m "short: what changed"
-
+git commit -m "message"
 git push origin dev
 ```
 
-If you get stuck, ping the team and paste the exact error message.
+**C) Wrong branch**
+
+```bash
+git branch
+git checkout dev
+git pull origin dev
+```
+
+**D) Merge conflict**
+
+1. Open the conflicted file and pick the correct version
+2. Then:
+
+   ```bash
+   git add path/to/file
+   git commit -m "resolve: merge conflict"
+   git push origin dev
+   ```
+
+**E) New library added**
+After installing new packages:
+
+```bash
+pip freeze > requirements.txt
+git add requirements.txt
+git commit -m "deps: update requirements"
+git push origin dev
+```
+
+**F) `.env` reminders**
+
+* Never commit `.env`
+* If you add a new key (like `MAPBOX_TOKEN`), tell the team
+
+---
+
+## Quick Reference
+
+```bash
+cd 311-neighborhood-equity
+git checkout dev
+git pull origin dev
+
+# work, edit, save
+git add .
+git commit -m "short: describe change"
+git push origin dev
+```
+
+Then open a **Pull Request from `dev` → `main`** when the work is ready to review or present.
