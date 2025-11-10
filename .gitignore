@@ -17,28 +17,6 @@ venv/
 .vscode/
 *.code-workspace
 
-# -----------------
-# Node / formatting tools
-# -----------------
-node_modules/
-
-# -----------------
-# Data (raw + processed)
-# -----------------
-data/raw/**
-data/processed/**
-!data/raw/README.md
-!data/processed/README.md
-
-# Allow small "sample" data files for demos if you add them later:
-!data/raw/sample_*.csv
-!data/processed/sample_*.parquet
-
-# -----------------
-# Outputs / figures
-# -----------------
-figures/**
-!figures/README.md
 
 # -----------------
 # OS / misc
