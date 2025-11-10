@@ -7,4 +7,5 @@ matplotlib
 seaborn
 mapclassify
 pydeck
+folium
 dotenv
