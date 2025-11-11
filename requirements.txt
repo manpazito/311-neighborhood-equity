@@ -9,3 +9,5 @@ mapclassify
 pydeck
 folium
 dotenv
+contextily
+shapely
