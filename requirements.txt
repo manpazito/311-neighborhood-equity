@@ -8,6 +8,7 @@ seaborn
 mapclassify
 pydeck
 folium
-dotenv
+python-dotenv
 contextily
 shapely
+pyarrow
