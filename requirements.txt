@@ -13,3 +13,4 @@ contextily
 shapely
 pyarrow
 gtfs_functions
+statsmodels
