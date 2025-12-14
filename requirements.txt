@@ -12,3 +12,4 @@ python-dotenv
 contextily
 shapely
 pyarrow
+gtfs_functions
