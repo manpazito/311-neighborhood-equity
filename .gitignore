@@ -24,6 +24,4 @@ venv/
 .DS_Store
 Thumbs.db
 
-# generated outputs
-figures/*.html
-!figures/index.html
+
