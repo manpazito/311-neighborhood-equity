@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>311 Neighborhood Equity – Interactive Figures</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      :root {
+        --bg: #f9fafb;
+        --card: #ffffff;
+        --text: #111827;
+        --muted: #6b7280;
+        --accent: #2563eb;
+        --border: #e5e7eb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+          Arial, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      header {
+        margin-bottom: 2.5rem;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem 0;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      header p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 700px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.25rem;
+      }
+
+      li {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      li:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      .desc {
+        margin-top: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>311 Neighborhood Equity – Interactive Figures</h1>
+        <p>
+          This page hosts interactive maps and visualizations created for the
+          <strong>311 Neighborhood Equity</strong> project, examining spatial patterns in service
+          requests, socioeconomic indicators, and data quality across San Francisco census tracts.
+        </p>
+      </header>
+
+      <ul>
+        <li>
+          <a href="acs_discovery_map.html">ACS Discovery Map</a>
+          <div class="desc">
+            Exploratory map of key American Community Survey indicators used in the analysis.
+          </div>
+        </li>
+
+        <li>
+          <a href="choropleth_311_requests_by_tract.html"> 311 Requests by Census Tract </a>
+          <div class="desc">
+            Choropleth visualization showing spatial variation in 311 request volume across San
+            Francisco.
+          </div>
+        </li>
+
+        <li>
+          <a href="request_source_map.html">311 Request Source Map</a>
+          <div class="desc">
+            Geographic distribution of 311 requests by reporting source and submission channel.
+          </div>
+        </li>
+
+        <li>
+          <a href="sf_311_tract_map.html">San Francisco 311 Tract Map</a>
+          <div class="desc">
+            Base map of San Francisco census tracts used for spatial joins and equity analysis.
+          </div>
+        </li>
+
+        <li>
+          <a href="ss_cleaning_map.html">Data Cleaning & QA Map</a>
+          <div class="desc">
+            Visualization highlighting spatial filtering, data cleaning steps, and quality assurance
+            checks.
+          </div>
+        </li>
+      </ul>
+
+      <footer>
+        Created for CY PLAN 101 · UC Berkeley<br />
+        © 2025 · Interactive figures hosted via GitHub Pages
+      </footer>
+    </div>
+  </body>
+</html>

@@ -26,3 +26,4 @@ Thumbs.db
 
 # generated outputs
 figures/*.html
+!figures/index.html
