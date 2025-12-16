@@ -14,3 +14,4 @@ shapely
 pyarrow
 gtfs_functions
 statsmodels
+ipykernel
